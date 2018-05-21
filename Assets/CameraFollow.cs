@@ -17,6 +17,10 @@ public class CameraFollow : MonoBehaviour
         transform.position = pos;
                
     }
+
+    public void SetTarget(GameObject target){
+        player = target;
+    }
 }
   
 

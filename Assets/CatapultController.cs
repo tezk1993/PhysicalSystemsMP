@@ -8,7 +8,11 @@ public class CatapultController : MonoBehaviour {
 
     public Camera AmmoCamera;
 
+    public Rigidbody mainRigidbody;
+
     public Slider TensionSlider;
+
+    public Slider RestraintTensionSlider;
 
     public GameObject Arm;
 
@@ -18,6 +22,9 @@ public class CatapultController : MonoBehaviour {
 
     public List<SpringJoint> SpringJoints;
     public bool camSwitch = true;
+
+
+    private Vector3 vectorZero = new Vector3(0.001f, 0.001f, 0.001f);
 
     private void Start()
     {
@@ -50,11 +57,20 @@ public class CatapultController : MonoBehaviour {
 
     public  void fireCatapult()
     {
-        Destroy(RestraintSpring);
+        RestraintSpring.spring = 0;
+        RestraintTensionSlider.value = 0;
+        mainRigidbody.AddForce(vectorZero);
     }
     
     public void GetTension(float Tension)
     {
         FiringSpring.spring = TensionSlider.value;
+        mainRigidbody.AddForce(vectorZero);
+    }
+
+    public void GetRestraintTension(float Tension)
+    {
+        RestraintSpring.spring = RestraintTensionSlider.value;
+        mainRigidbody.AddForce(vectorZero);
     }
 }
