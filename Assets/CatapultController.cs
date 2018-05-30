@@ -17,6 +17,7 @@ public class CatapultController : MonoBehaviour {
     public GameObject Arm;
 
     public SpringJoint FiringSpring;
+    public SpringJoint FiringSpring2;
 
     public SpringJoint RestraintSpring;
 
@@ -36,6 +37,7 @@ public class CatapultController : MonoBehaviour {
             {
                 FiringSpring = SpringJoints[i];
             }
+
             else
             {
                 RestraintSpring = SpringJoints[i];
@@ -65,6 +67,7 @@ public class CatapultController : MonoBehaviour {
     public void GetTension(float Tension)
     {
         FiringSpring.spring = TensionSlider.value;
+
         mainRigidbody.AddForce(vectorZero);
     }
 
